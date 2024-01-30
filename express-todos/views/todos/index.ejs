@@ -1,0 +1,14 @@
+<%- include('../partails/header') %>
+  <h1>Express To-Do</h1>
+  <ul>
+    <% todos.forEach( todo=> { %>
+      <li>
+        <a href="/todos/<%= todo.id %>">
+          <%= todo.todo %>
+        </a>
+        -
+        <%= todo.done ? 'done' : 'not done' %>
+      </li>
+      <% }); %>
+  </ul>
+  <%- include('../partails/footer') %>
