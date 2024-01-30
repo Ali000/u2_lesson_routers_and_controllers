@@ -1,7 +1,25 @@
-<%- include('../partails/header') %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
   <h1>Express To-Do</h1>
+  <h3>To-dos as of <%= time %>
+  </h3>
+  <a href="/todos/new">Add To Do</a>
   <ul>
     <% todos.forEach( todo=> { %>
+      <a href="/todos/<%= todo.id %>/edit">Edit</a>
+      <form action="/todos/<%= todo.id %>?_method=DELETE" class="delete-form" method="POST">
+        <button type="submit">X</button>
+      </form>
+
       <li>
         <a href="/todos/<%= todo.id %>">
           <%= todo.todo %>
@@ -11,4 +29,7 @@
       </li>
       <% }); %>
   </ul>
-  <%- include('../partails/footer') %>
+
+</body>
+
+</html>

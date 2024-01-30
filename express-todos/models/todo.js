@@ -9,7 +9,7 @@ const getAll = () => {
   return todos;
 }
 
-getOne = (id) => {
+const getOne = (id) => {
   // return todos.find(todo => todo.id === parseInt(id));
   let todo = todos.find((todo) => {
     return todo.id === parseInt(id);
@@ -17,7 +17,26 @@ getOne = (id) => {
   return todo;
 }
 
+const create = (todo) => {
+  todo.id = Date.now() % 1000000;
+  todo.done = false;
+  todos.push(todo);
+};
+
+const deleteOne = (id) => {  
+  const idx = todos.findIndex(todo => todo.id === parseInt(id));
+  todos.splice(idx, 1);
+};
+
+const updateOne = (id, updatedTodo) => {
+  const todoToUpdate = todos.find(todo => todo.id === parseInt(id));
+  todoToUpdate.todo = updatedTodo; 
+}
+
 module.exports = {
   getAll,
-  getOne
+  getOne, 
+  create, 
+  deleteOne,
+  updateOne
 };
